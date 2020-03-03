@@ -1,34 +1,17 @@
-Tema 3 - Protocoale de comunicatie (HTTP)
+Description of the problem:
 
-Nume: Nicolae Andreea-Cristina
-Grupa: 323CA
+- the whole homework was made as a treasure hunt where you were sending http requests to the server and the server send back responses which helped you
+format the next http request to the server and so on, untill you solved the treasure hunt.
+- each task had different, or added up, more parameters which you needed to handle from the json response that was given to you.
 
-Fisiere: Am folosit fisierele helpers.c, helpers.h, requests.c si requests.h din labul de http pentru rezolvare temei. In requests.c si requests.h am modificat urmatoarele:
-
-requests.c : Am adaugat in compunerea mesajului spre server si parametrii in plus 		din cerere:-(pentru GET)cookie, token;
-	   	   -(pentru POST)cookie, type, token;
-requests.h: am modificat header-ul functiilor ca sa se potriveasca cu cele din    		requests.c.
-
-Client.c :  Pentru fiecare etapa, am trecut prin urmatori pasi:
-		-prelucrarea si extragerea parametriilor necesari pentru cererea http din mesajul oferit de server (cu ajutor bibliotecilor json);
-		OBS: La etapa 1 nu a fost nevoie de acest pas.
-		-extragerea cookie-urile cu ajutor functiei CookieGetter();
-		-setarea conexiunii si prelucrarea request-ului GET/POST, cu parametrii necesari;
-		-trimiterea request-ului si obtinere raspunsului de la server;
-		-inchidere conexiunii curente.
-
-OBS: La etapa 5, pe langa acesti pasi, a trebuit si sa:
-		-separam hostname-ul de path din url-ul trimis in raspunsul din server;
-		-obtinem IP-ul din hostname;
-		-trimitem doua cererii separare, una pe un canal web, a doua pe canalul nostru.
+The steps to resolve each task were:
+	- handle and extract the parameters given to you via the json response;
+	- extract the cookies with the CookieGetter function ( was not needed for the first task) : CookieGetter function searched for the string "Set cookie" then extracted 
+	everything from the first space to the end of the message which represented the cookies(they were also given in the json file);
+	- set the connection and make the GET/POST request, with the parameters;
+	- send the request and get the response from the server;
+	- close the connection;
 
 
-Functiile:
-
-     -Json_beginning_text: cauta inceputul textul Json si il returneaza;
-     -CookieGetter: extrage cookie-urile din interiorul mesajului trimis de server.
-      Cauta secventa "Set Cookie: " si extrage tot ce e pana la primul spatiu si il adauga la cookie. Face asta pana ajunge la sfarsitul mesajului.
-
-parson.h si parson.c: pentru preluarea datelor din raspuns, am ales sa lucrez cu binlioteca parson deoarece este usor de utilizat si avea toate functiile necesare pentru aceasta tema.
 
 
